@@ -36,7 +36,33 @@ const createUser = asyncErrorHandler( async (req, res, next) => {
     
 })
 
+const loginUser = asyncErrorHandler (async(req, res, next) => {
+    const {email, password} = req.body
+    // Check for email and password
+    if(!email || !password){
+        const error = new CustomError('Please provide email and password', 400)
+        return next(error)
+    }
+
+    // Check whether the user exist and has provided correct password
+    const user = await UserModel.findOne({email}).select('+password')
+
+    const isMatch = await user.comparePassword(password, user.password)
+
+    if(!user || !isMatch ){
+        const error = new CustomError('Invalid email or password', 401)
+        return next(error)
+    }
+
+    res.status(200).json({
+        status :'success',
+        message: 'User logged in successfully',
+        user
+    })
+})
+
 module.exports = {
     getUsers,
-    createUser
+    createUser, 
+    loginUser
 }

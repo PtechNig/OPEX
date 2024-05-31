@@ -27,7 +27,8 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type : String,
-        required : [true, 'Please Enter your password']
+        required : [true, 'Please Enter your password'],
+        select : false
     },
     confirmPassword : {
         type : String,
@@ -42,6 +43,7 @@ const userSchema = new mongoose.Schema({
 
 })
 
+//Password encrypting before saving in the database
 userSchema.pre('save', async function(next){
     if(!this.isModified('password')) return next;
 
@@ -51,6 +53,11 @@ userSchema.pre('save', async function(next){
 
     next();
 })
+
+//Comparing password provided for logging with password in the database
+userSchema.methods.comparePassword = async function(userPassword, dbPassword) {
+    return await bcrypt.compare(userPassword, dbPassword)
+}
 
 
 const UserModel = mongoose.model('User', userSchema)
