@@ -1,6 +1,7 @@
 const UserModel = require('../Models/userModel')
 const CustomError = require('../ErrorHandlers/globalErrorHandler')
 const asyncErrorHandler = require('../ErrorHandlers/asyncErrorHandler')
+const mailer = require('../Utilities/mailer')
 
 const getUsers = asyncErrorHandler(async(req, res, next) => {    
         const users = await UserModel.find({})
@@ -17,7 +18,7 @@ const getUsers = asyncErrorHandler(async(req, res, next) => {
 const createUser = asyncErrorHandler( async (req, res, next) => { 
         const {firstName, lastName, email, phoneNo, password, confirmPassword} = req.body;
         
-        const user = UserModel({
+        const newUser = await UserModel.create({
             firstName,
             lastName,
             email,
@@ -26,11 +27,11 @@ const createUser = asyncErrorHandler( async (req, res, next) => {
             confirmPassword
         })
 
-        const newUser = await UserModel.create(user)
+       await mailer(newUser)
 
         res.status(201).json({
             status : 'success',
-            message: 'User created successfully',
+            message: 'User created successfully and an Email has been sent to you',
             data: newUser
         })
     
