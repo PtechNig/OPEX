@@ -11,9 +11,9 @@ route.get('/' , (req, res) => {
         message: 'Welcome to Opex'
     })
 })
-route.get('/api/opex/v1/users/signup', controller.getUsers)
-route.post('/api/opex/v1/users/signup', controller.createUser)
-route.post('/api/opex/v1/users/login', controller.loginUser )
+route.get('/signup', controller.getUsers)
+route.post('/signup', controller.createUser)
+route.post('/login', controller.loginUser )
 route.all('*', (req, res, next) => {
     const error = new CustomError('Page not found', 404)
     next(error)
