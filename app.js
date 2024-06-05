@@ -21,7 +21,7 @@ mongoose.connect(process.env.CONNEC_STR, {
 
 // Middlewares
 app.use(express.json());
-app.use('/', route)
+app.use('/api/opex/v1/users', route)
 app.use(errorHandler)
 
 
