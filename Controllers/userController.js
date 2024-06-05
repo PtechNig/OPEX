@@ -16,24 +16,24 @@ const getUsers = asyncErrorHandler(async(req, res, next) => {
 
 
 const createUser = asyncErrorHandler( async (req, res, next) => { 
-        const {firstName, lastName, email, phoneNo, password, confirmPassword} = req.body;
-        
-        const newUser = await UserModel.create({
-            firstName,
-            lastName,
-            email,
-            phoneNo,
-            password,
-            confirmPassword
-        })
+    const { firstName, lastName, email, phoneNo, password, confirmPassword } = req.body;
 
-       await mailer(newUser)
+    const newUser = await UserModel.create({
+        firstName,
+        lastName,
+        email,
+        phoneNo,
+        password,
+        confirmPassword
+    })
 
-        res.status(201).json({
-            status : 'success',
-            message: 'User created successfully and an Email has been sent to you',
-            data: newUser
-        })
+    await mailer(newUser)
+
+    res.status(201).json({
+        status: 'success',
+        message: 'User created successfully and OTP sent to your mail',
+        data: newUser
+    })
     
 })
 
