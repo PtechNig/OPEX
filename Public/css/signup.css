@@ -112,6 +112,11 @@ form .submit:hover{
     }
 
     .container .box h1{
-        font-size: 0.7rem;
+        font-size: 1.1rem;
     }
+
+    .container .box p{
+        font-size: 0.9rem;
+    }
+
 }
