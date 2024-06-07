@@ -111,4 +111,7 @@ form .submit:hover{
         width: 80%;
     }
 
+    .container .box h1{
+        font-size: 0.7rem;
+    }
 }
