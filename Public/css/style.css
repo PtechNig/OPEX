@@ -60,8 +60,11 @@
 
 /* Small Screen */
 @media  (min-width: 300px)and (max-width:700px){
+    .inner-container{
+        text-align: center;
+    }
     .inner-container h1{
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
     .inner-container p {
