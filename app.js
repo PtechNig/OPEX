@@ -5,6 +5,8 @@ const app = express();
 const mongoose = require('mongoose')
 const route = require('./Routes/userRoute')
 const errorHandler = require('./ErrorHandlers/errorHandler')
+const path = require('path');
+
 
 
 // DB connection
@@ -21,7 +23,11 @@ mongoose.connect(process.env.CONNEC_STR, {
 
 // Middlewares
 app.use(express.json());
-app.use('/api/opex/v1/users', route)
+app.use(express.urlencoded({extended : true}))
+app.use(express.static(path.join(__dirname, 'Public')));
+app.set('views', path.join(__dirname, 'Views'));
+app.set('view engine', 'ejs')
+app.use('/', route)
 app.use(errorHandler)
 
 

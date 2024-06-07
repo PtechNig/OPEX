@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: rgb(20, 44, 0);
+    background-color:rgb(20, 44, 0) ;
+}
+
+.inner-container {
+    background-color: rgb(255, 255, 255);
+    width: 30%;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 4px 4px 15px rgb(57, 128, 0);
+}
+
+.inner-container h1{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.field{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    margin: 5px 0;
+}
+
+.field input{
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: solid 1px rgb(20, 44, 0);
+    background-color: transparent;
+    line-height: 2.5;
+    color: rgb(20, 44, 0);
+    padding-left: 20px;
+}
+
+.field input:focus{
+    border: solid 2px rgb(20, 44, 0);
+}
+
+
+
+form .submit{
+    width: 100%;
+    background-color: rgb(20, 44, 0) ;
+    margin-top: 20px;
+    border: 1px solid rgb(20, 44, 0);
+    padding: 10px;
+    color: rgb(255, 255, 255) ;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    transition: .5s;
+    cursor: pointer;
+}
+
+form .submit:hover{
+    background-color: transparent ;
+    color: rgb(20, 44, 0) ;
+}
+
+
+/* Successful page */
+.container .box{
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 15px rgb(57, 128, 0);
+    color: rgb(20, 44, 0);
+    text-align: center;
+}
+
+.container .box p {
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+}
+
+.container .box  a{
+    background-color: rgb(20, 44, 0) ;
+    margin-top: 20px;
+    border: 1px solid rgb(20, 44, 0);
+    padding: 5px 10px;
+    color: rgb(255, 255, 255) ;
+    font-size: 1rem;
+    border-radius: 10px;
+    transition: .5s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.container .box  a:hover{
+    background-color: transparent ;
+    color: rgb(20, 44, 0) ;
+}

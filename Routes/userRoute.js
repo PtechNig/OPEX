@@ -6,11 +6,23 @@ const CustomError = require('../ErrorHandlers/globalErrorHandler');
 const route = express.Router()
 
 route.get('/' , (req, res) => {
-    res.status(200).json({
-        status :'success',
-        message: 'Welcome to Opex'
-    })
+    res.render('index')
 })
+
+route.get('/signup' , (req, res) => {
+    res.render('signup')
+})
+
+
+route.get('/login' , (req, res) => {
+    res.render('login')
+})
+
+route.get('/successful' , (req, res) => {
+    res.render('successful')
+})
+
+
 route.get('/signup', controller.getUsers)
 route.post('/signup', controller.createUser)
 route.post('/login', controller.loginUser )

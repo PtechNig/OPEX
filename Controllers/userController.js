@@ -3,6 +3,7 @@ const CustomError = require('../ErrorHandlers/globalErrorHandler')
 const asyncErrorHandler = require('../ErrorHandlers/asyncErrorHandler')
 const mailer = require('../Utilities/mailer')
 
+
 const getUsers = asyncErrorHandler(async(req, res, next) => {    
         const users = await UserModel.find({})
 
@@ -28,12 +29,9 @@ const createUser = asyncErrorHandler( async (req, res, next) => {
     })
 
     await mailer(newUser)
+    console.log(newUser)
 
-    res.status(201).json({
-        status: 'success',
-        message: 'User created successfully and OTP sent to your mail',
-        data: newUser
-    })
+    return res.render('successful');
     
 })
 
@@ -55,11 +53,8 @@ const loginUser = asyncErrorHandler (async(req, res, next) => {
         return next(error)
     }
 
-    res.status(200).json({
-        status :'success',
-        message: 'User logged in successfully',
-        user
-    })
+   return res.render('dashboard');
+
 })
 
 module.exports = {
