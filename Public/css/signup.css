@@ -103,3 +103,12 @@ form .submit:hover{
     background-color: transparent ;
     color: rgb(20, 44, 0) ;
 }
+
+
+/* Small Screen */
+@media  (min-width: 300px)and (max-width:700px){
+    .inner-container {
+        width: 80%;
+    }
+
+}
